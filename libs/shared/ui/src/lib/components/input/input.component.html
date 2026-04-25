@@ -1,0 +1,21 @@
+<div class="input-wrapper">
+  <label *ngIf="label" class="input-label">
+    {{ label }}
+    <span *ngIf="required" class="required">*</span>
+  </label>
+  <input
+    [type]="type"
+    [value]="value"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [attr.aria-label]="label"
+    (input)="onInput($event)"
+    (change)="onChange($event)"
+    (blur)="onBlur($event)"
+    class="input-field"
+    [class.error]="hasError"
+  />
+  <div *ngIf="hasError && errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>

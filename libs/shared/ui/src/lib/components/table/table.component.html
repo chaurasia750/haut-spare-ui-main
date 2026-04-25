@@ -1,0 +1,73 @@
+<div class="table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th *ngFor="let col of columns" [style.width]="col.width" class="table-header">
+          <button
+            *ngIf="col.sortable"
+            class="sort-button"
+            (click)="onSort(col.key)"
+            [class.active]="sortColumn === col.key"
+          >
+            {{ col.label }}
+            <span class="sort-indicator" *ngIf="sortColumn === col.key">
+              {{ sortDirection === 'asc' ? '▲' : '▼' }}
+            </span>
+          </button>
+          <span *ngIf="!col.sortable">{{ col.label }}</span>
+        </th>
+        <th *ngIf="hasActions" class="table-header">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data; let i = index" class="table-row">
+        <td *ngFor="let col of columns" class="table-cell">
+          {{ row[col.key] }}
+        </td>
+        <td *ngIf="hasActions" class="table-cell actions-cell">
+          <button
+            *ngIf="onEdit"
+            class="action-btn edit"
+            (click)="onEdit(row)"
+            title="Edit"
+          >
+            ✏️
+          </button>
+          <button
+            *ngIf="onDelete"
+            class="action-btn delete"
+            (click)="onDelete(row)"
+            title="Delete"
+          >
+            🗑️
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="data.length === 0" class="table-row empty">
+        <td [attr.colspan]="columns.length + (hasActions ? 1 : 0)" class="table-cell">
+          {{ emptyMessage }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="pagination" class="pagination">
+    <button
+      class="btn-pagination"
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+    >
+      Previous
+    </button>
+    <span class="page-info">
+      Page {{ currentPage }} of {{ totalPages }}
+    </span>
+    <button
+      class="btn-pagination"
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+    >
+      Next
+    </button>
+  </div>
+</div>

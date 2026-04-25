@@ -1,0 +1,18 @@
+<nav class="breadcrumb-container" *ngIf="breadcrumbs$ | async as breadcrumbs">
+  <ol class="breadcrumb-list">
+    <li *ngFor="let breadcrumb of breadcrumbs; let last = last" class="breadcrumb-item">
+      <a
+        *ngIf="!last"
+        [href]="breadcrumb.url"
+        class="breadcrumb-link"
+        (click)="navigate($event, breadcrumb.url)"
+      >
+        {{ breadcrumb.label }}
+      </a>
+      <span *ngIf="last" class="breadcrumb-current">
+        {{ breadcrumb.label }}
+      </span>
+      <span *ngIf="!last" class="breadcrumb-separator">/</span>
+    </li>
+  </ol>
+</nav>

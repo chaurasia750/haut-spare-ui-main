@@ -1,0 +1,30 @@
+<div class="not-found-container">
+  <div class="not-found-content">
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-message">
+      The page you're looking for doesn't exist or has been moved.
+    </p>
+
+    <div class="error-actions">
+      <app-button variant="primary" routerLink="/">
+        Go to Home
+      </app-button>
+      <app-button
+        variant="secondary"
+        (click)="goBack()"
+      >
+        Go Back
+      </app-button>
+    </div>
+
+    <div class="suggestions">
+      <p class="suggestions-title">Or try:</p>
+      <ul class="suggestions-list">
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/admin">Admin Dashboard</a></li>
+        <li><a routerLink="/member">Member Portal</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

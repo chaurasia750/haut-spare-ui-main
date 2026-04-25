@@ -16,86 +16,8 @@ export interface Breadcrumb {
   selector: 'app-breadcrumb',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <nav class="breadcrumb-container" *ngIf="breadcrumbs$ | async as breadcrumbs">
-      <ol class="breadcrumb-list">
-        <li *ngFor="let breadcrumb of breadcrumbs; let last = last" class="breadcrumb-item">
-          <a
-            *ngIf="!last"
-            [href]="breadcrumb.url"
-            class="breadcrumb-link"
-            (click)="navigate($event, breadcrumb.url)"
-          >
-            {{ breadcrumb.label }}
-          </a>
-          <span *ngIf="last" class="breadcrumb-current">
-            {{ breadcrumb.label }}
-          </span>
-          <span *ngIf="!last" class="breadcrumb-separator">/</span>
-        </li>
-      </ol>
-    </nav>
-  `,
-  styles: [
-    `
-      .breadcrumb-container {
-        padding: 12px 24px;
-        background: white;
-        border-bottom: 1px solid #e2e8f0;
-      }
-
-      .breadcrumb-list {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        flex-wrap: wrap;
-      }
-
-      .breadcrumb-item {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-      }
-
-      .breadcrumb-link {
-        color: #3182ce;
-        text-decoration: none;
-        cursor: pointer;
-        transition: color 0.2s;
-
-        &:hover {
-          color: #2c5aa0;
-          text-decoration: underline;
-        }
-      }
-
-      .breadcrumb-current {
-        color: #2d3748;
-        font-weight: 500;
-      }
-
-      .breadcrumb-separator {
-        color: #cbd5e0;
-        margin: 0 8px;
-      }
-
-      @media (max-width: 768px) {
-        .breadcrumb-container {
-          padding: 8px 16px;
-        }
-
-        .breadcrumb-list {
-          font-size: 12px;
-        }
-
-        .breadcrumb-separator {
-          margin: 0 4px;
-        }
-      }
-    `,
-  ],
+  templateUrl: './breadcrumb.component.html',
+  styleUrls: ['./breadcrumb.component.scss'],
 })
 export class BreadcrumbComponent implements OnInit {
   breadcrumbs$: Observable<Breadcrumb[]>;

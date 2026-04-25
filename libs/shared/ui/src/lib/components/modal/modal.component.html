@@ -1,0 +1,32 @@
+<div *ngIf="isOpen" class="modal-overlay" (click)="onBackdropClick()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2 class="modal-title">{{ title }}</h2>
+      <button class="modal-close" (click)="onClose()" aria-label="Close modal">
+        ×
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="modal-footer" *ngIf="showActions">
+      <button
+        class="btn btn-secondary"
+        (click)="onCancel()"
+        [disabled]="isLoading"
+      >
+        {{ cancelButtonText }}
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="onConfirm()"
+        [disabled]="isLoading || isConfirmDisabled"
+      >
+        <span *ngIf="!isLoading">{{ confirmButtonText }}</span>
+        <span *ngIf="isLoading">Loading...</span>
+      </button>
+    </div>
+  </div>
+</div>

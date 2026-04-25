@@ -1,0 +1,34 @@
+<div class="error-boundary">
+  <div class="error-container">
+    <div class="error-icon">⚠️</div>
+    <h2 class="error-title">{{ title }}</h2>
+    <p class="error-message">{{ message }}</p>
+
+    <div *ngIf="details" class="error-details">
+      <p class="details-label">Error Details:</p>
+      <pre class="details-content">{{ details }}</pre>
+    </div>
+
+    <div class="error-actions">
+      <app-button variant="secondary" (click)="onGoBack()">
+        ← Go Back
+      </app-button>
+      <app-button variant="primary" (click)="onRetry()">
+        🔄 Retry Loading
+      </app-button>
+    </div>
+
+    <div class="error-info">
+      <p class="info-text">
+        If this problem persists, please contact support or try clearing your browser cache.
+      </p>
+      <div class="support-links">
+        <a href="/support" class="link">Support Center</a>
+        <span class="separator">•</span>
+        <a href="/faq" class="link">FAQ</a>
+        <span class="separator">•</span>
+        <a href="mailto:support@example.com" class="link">Contact Support</a>
+      </div>
+    </div>
+  </div>
+</div>

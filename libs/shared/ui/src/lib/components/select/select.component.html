@@ -1,0 +1,30 @@
+<div class="select-wrapper">
+  <label *ngIf="label" class="select-label">
+    {{ label }}
+    <span *ngIf="required" class="required">*</span>
+  </label>
+  <div class="select-container">
+    <input
+      type="text"
+      class="select-input"
+      [placeholder]="placeholder"
+      [value]="searchText"
+      (input)="onSearch($event)"
+      (focus)="openDropdown()"
+      [class.open]="isOpen"
+    />
+    <div class="select-arrow">▼</div>
+
+    <div *ngIf="isOpen" class="dropdown-menu">
+      <div *ngFor="let opt of filteredOptions" class="dropdown-item" (click)="selectOption(opt)">
+        {{ opt.label }}
+      </div>
+      <div *ngIf="filteredOptions.length === 0" class="dropdown-empty">
+        No options found
+      </div>
+    </div>
+  </div>
+  <div *ngIf="selectedOption" class="selected-value">
+    Selected: {{ selectedOption.label }}
+  </div>
+</div>
