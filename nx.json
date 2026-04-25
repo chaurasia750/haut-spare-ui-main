@@ -1,0 +1,63 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "version": 2,
+  "projects": {
+    "shell": {
+      "projectType": "application",
+      "sourceRoot": "apps/shell/src",
+      "prefix": "app"
+    },
+    "admin": {
+      "projectType": "application",
+      "sourceRoot": "apps/admin/src",
+      "prefix": "app"
+    },
+    "member": {
+      "projectType": "application",
+      "sourceRoot": "apps/member/src",
+      "prefix": "app"
+    },
+    "shared-ui": {
+      "projectType": "library",
+      "sourceRoot": "libs/shared/ui/src",
+      "prefix": "lib"
+    },
+    "shared-auth": {
+      "projectType": "library",
+      "sourceRoot": "libs/shared/auth/src",
+      "prefix": "lib"
+    },
+    "data-access-api": {
+      "projectType": "library",
+      "sourceRoot": "libs/data-access/api/src",
+      "prefix": "lib"
+    },
+    "util-helpers": {
+      "projectType": "library",
+      "sourceRoot": "libs/util/helpers/src",
+      "prefix": "lib"
+    },
+    "util-constants": {
+      "projectType": "library",
+      "sourceRoot": "libs/util/constants/src",
+      "prefix": "lib"
+    }
+  },
+  "targetDefaults": {
+    "@nx/angular:build": {
+      "outputs": ["{options.outputPath}"]
+    },
+    "@nx/angular:test": {
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "cache": true
+    }
+  },
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  },
+  "cli": {
+    "packageManager": "npm",
+    "defaultCollection": "@nx/angular"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "name": "shell",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/shell/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/shell",
+        "index": "apps/shell/src/index.html",
+        "main": "apps/shell/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/shell/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
+        "styles": ["apps/shell/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "bundle",
+              "name": "main",
+              "baseline": "250kb",
+              "maximumWarning": "300kb",
+              "maximumError": "400kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "browserTarget": "shell:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "shell:build:production"
+        },
+        "development": {
+          "browserTarget": "shell:build:development"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/apps/shell"],
+      "options": {
+        "main": "apps/shell/src/test.ts",
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/shell/tsconfig.spec.json",
+        "karmaConfig": "apps/shell/karma.conf.js",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/shell/src/favicon.ico", "apps/shell/src/assets"],
+        "styles": ["apps/shell/src/styles.scss"],
+        "scripts": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/shell/**/*.ts", "apps/shell/**/*.html"]
+      }
+    }
+  },
+  "tags": ["type:app", "type:shell"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "data-access-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/data-access/api/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "tsConfig": "libs/data-access/api/tsconfig.lib.json",
+        "project": "libs/data-access/api/ng-package.json"
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/libs/data-access/api"],
+      "options": {
+        "main": "libs/data-access/api/src/test.ts",
+        "tsConfig": "libs/data-access/api/tsconfig.spec.json",
+        "karmaConfig": "libs/data-access/api/karma.conf.js"
+      }
+    }
+  },
+  "tags": ["type:lib", "type:data-access"]
+}

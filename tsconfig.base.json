@@ -1,0 +1,38 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "@haut-spare/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@haut-spare/shared-auth": ["libs/shared/auth/src/index.ts"],
+      "@haut-spare/data-access-api": ["libs/data-access/api/src/index.ts"],
+      "@haut-spare/feature-dashboard": ["libs/feature/dashboard/src/index.ts"],
+      "@haut-spare/feature-profile": ["libs/feature/profile/src/index.ts"],
+      "@haut-spare/feature-reports": ["libs/feature/reports/src/index.ts"],
+      "@haut-spare/util-helpers": ["libs/util/helpers/src/index.ts"],
+      "@haut-spare/util-constants": ["libs/util/constants/src/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

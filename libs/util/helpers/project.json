@@ -1,0 +1,26 @@
+{
+  "name": "util-helpers",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/util/helpers/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "tsConfig": "libs/util/helpers/tsconfig.lib.json",
+        "project": "libs/util/helpers/ng-package.json"
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/libs/util/helpers"],
+      "options": {
+        "main": "libs/util/helpers/src/test.ts",
+        "tsConfig": "libs/util/helpers/tsconfig.spec.json",
+        "karmaConfig": "libs/util/helpers/karma.conf.js"
+      }
+    }
+  },
+  "tags": ["type:lib", "type:util"]
+}

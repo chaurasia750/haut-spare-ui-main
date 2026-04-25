@@ -1,0 +1,55 @@
+{
+  "name": "member",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/member/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/member",
+        "index": "apps/member/src/index.html",
+        "main": "apps/member/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/member/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/member/src/favicon.ico", "apps/member/src/assets"],
+        "styles": ["apps/member/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "bundle",
+              "name": "main",
+              "baseline": "500kb",
+              "maximumWarning": "550kb",
+              "maximumError": "650kb"
+            }
+          ],
+          "outputHashing": "all"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "browserTarget": "member:build",
+        "port": 4202
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/apps/member"],
+      "options": {
+        "main": "apps/member/src/test.ts",
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/member/tsconfig.spec.json",
+        "karmaConfig": "apps/member/karma.conf.js",
+        "inlineStyleLanguage": "scss"
+      }
+    }
+  }
+}

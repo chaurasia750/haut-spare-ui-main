@@ -1,0 +1,33 @@
+{
+  "name": "shared-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/shared/ui/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "tsConfig": "libs/shared/ui/tsconfig.lib.json",
+        "project": "libs/shared/ui/ng-package.json"
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/libs/shared/ui"],
+      "options": {
+        "main": "libs/shared/ui/src/test.ts",
+        "tsConfig": "libs/shared/ui/tsconfig.spec.json",
+        "karmaConfig": "libs/shared/ui/karma.conf.js"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/ui/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["type:lib", "type:shared"]
+}

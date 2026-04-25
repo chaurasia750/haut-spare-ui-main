@@ -1,0 +1,26 @@
+{
+  "name": "shared-auth",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/shared/auth/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "tsConfig": "libs/shared/auth/tsconfig.lib.json",
+        "project": "libs/shared/auth/ng-package.json"
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/libs/shared/auth"],
+      "options": {
+        "main": "libs/shared/auth/src/test.ts",
+        "tsConfig": "libs/shared/auth/tsconfig.spec.json",
+        "karmaConfig": "libs/shared/auth/karma.conf.js"
+      }
+    }
+  },
+  "tags": ["type:lib", "type:shared", "type:auth"]
+}

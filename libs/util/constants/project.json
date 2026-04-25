@@ -1,0 +1,26 @@
+{
+  "name": "util-constants",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/util/constants/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "tsConfig": "libs/util/constants/tsconfig.lib.json",
+        "project": "libs/util/constants/ng-package.json"
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/libs/util/constants"],
+      "options": {
+        "main": "libs/util/constants/src/test.ts",
+        "tsConfig": "libs/util/constants/tsconfig.spec.json",
+        "karmaConfig": "libs/util/constants/karma.conf.js"
+      }
+    }
+  },
+  "tags": ["type:lib", "type:util"]
+}

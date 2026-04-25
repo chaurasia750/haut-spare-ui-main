@@ -1,0 +1,55 @@
+{
+  "name": "admin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/admin/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/admin",
+        "index": "apps/admin/src/index.html",
+        "main": "apps/admin/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/admin/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/admin/src/favicon.ico", "apps/admin/src/assets"],
+        "styles": ["apps/admin/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "bundle",
+              "name": "main",
+              "baseline": "500kb",
+              "maximumWarning": "550kb",
+              "maximumError": "650kb"
+            }
+          ],
+          "outputHashing": "all"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "browserTarget": "admin:build",
+        "port": 4201
+      }
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "outputs": ["coverage/apps/admin"],
+      "options": {
+        "main": "apps/admin/src/test.ts",
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/admin/tsconfig.spec.json",
+        "karmaConfig": "apps/admin/karma.conf.js",
+        "inlineStyleLanguage": "scss"
+      }
+    }
+  }
+}
